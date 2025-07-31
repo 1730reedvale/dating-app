@@ -1,0 +1,39 @@
+/* /src/settings/SettingsPage.css */
+
+.settings-page {
+  padding: 32px;
+  max-width: 720px;
+  margin: 0 auto;
+  background-color: #1a2b40;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.settings-page h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-form label {
+  font-weight: bold;
+}
+
+.settings-form input,
+.settings-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.settings-form button {
+  margin-top: 20px;
+  align-self: flex-start;
+}

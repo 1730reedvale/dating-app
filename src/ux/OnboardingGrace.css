@@ -1,0 +1,11 @@
+div {
+  background-color: #e7f3fe;
+  border: 1px solid #2196f3;
+  padding: 1em;
+  margin: 1em auto;
+  max-width: 400px;
+  border-radius: 8px;
+  color: #0b5ed7;
+  text-align: center;
+  font-weight: bold;
+}

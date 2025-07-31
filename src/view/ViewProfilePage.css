@@ -1,0 +1,76 @@
+.view-profile {
+  padding: 2rem;
+  background-color: #0d1b2a;
+  color: white;
+  min-height: 100vh;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profile-card {
+  background-color: #1b263b;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.profile-card h2 {
+  color: #f77f00;
+  margin-bottom: 0.5rem;
+}
+
+.profile-card p {
+  color: #ccc;
+  margin: 0.3rem 0;
+}
+
+.reputation-section {
+  margin-top: 1.5rem;
+  background-color: #243447;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.reputation-section h3 {
+  color: #f77f00;
+  margin-bottom: 0.5rem;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.invite-btn,
+.message-btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.invite-btn {
+  background-color: #f77f00;
+  color: white;
+}
+
+.invite-btn:hover {
+  background-color: #ff9900;
+}
+
+.message-btn {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.message-btn:hover {
+  background-color: #ff6666;
+}

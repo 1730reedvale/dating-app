@@ -1,0 +1,52 @@
+/* /src/online/OnlinePage.css */
+
+.online-page {
+  padding: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.online-page h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.online-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.online-card {
+  background-color: #1a2b40;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.online-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.online-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.online-actions button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.online-actions button:hover {
+  background-color: #e05500;
+}

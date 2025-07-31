@@ -1,0 +1,94 @@
+/* /src/search/SearchPage.css */
+
+.search-page {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.search-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filter-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.filter-group label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #444;
+}
+
+.filter-group select,
+.filter-group input[type="number"] {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.results-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.results-container h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.profile-card {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.profile-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile-card h4 {
+  margin: 0.5rem 0 0.25rem;
+  color: #222;
+}
+
+.profile-card p {
+  margin: 0.2rem 0;
+  color: #555;
+  font-size: 0.9rem;
+}

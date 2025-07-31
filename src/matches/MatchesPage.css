@@ -1,0 +1,54 @@
+/* /src/matches/MatchesPage.css */
+
+.matches-page {
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.matches-page h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.match-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.match-card {
+  background-color: #1a2b40;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.match-card:hover {
+  transform: scale(1.02);
+}
+
+.match-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boosted-badge {
+  background-color: #ff6600;
+  color: white;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  border-radius: 8px;
+}
+
+.match-details {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+}

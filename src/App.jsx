@@ -11,7 +11,7 @@ import SearchPage from "./search/SearchPage";
 import FAQPage from "./faq/FAQPage";
 import SettingsPage from "./settings/SettingsPage";
 import OnlinePage from "./online/OnlinePage";
-import ViewProfilePage from "./view/TempPage";
+import ViewProfilePage from "./view/ViewProfilePage";
 import LoginPage from "./auth/LoginPage";
 
 function App() {

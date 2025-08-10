@@ -11,7 +11,7 @@ app.use(cors({ origin: ['http://localhost:5173'] }));
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecret ? Stripe(stripeSecret) : null;
 
-app.get('/', (req, res) => res.send('Backend is running!'));
+app.get('/', (req, res) => res.send('Backend v2 (stripe test)'));
 app.get('/health', (req, res) => res.status(200).send('OK'));
 app.get('/api/ping', (req, res) => res.json({ pong: true }));
 

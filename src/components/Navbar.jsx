@@ -1,210 +1,138 @@
-import React from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext.jsx";
-import { getAuth, signOut } from "firebase/auth";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import GoPremiumButton from '../payments/GoPremiumButton.jsx';
+import PremiumBadge from '../premium/PremiumBadge.jsx';
 
-const NavBar = () => {
-  const navigate = useNavigate();
-  const { currentUser, userData, logout } = useAuth() || {};
-  const isPremium = !!userData?.premium;
+// make sure Firebase is initialized
+import '../firebase/firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
-  const linkStyle = {
-    padding: "0.6rem 0.9rem",
-    textDecoration: "none",
-    color: "white",
-    fontSize: "0.95rem",
-  };
-
-  const activeStyle = { textDecoration: "underline" };
-
-  const handleLogout = async () => {
-    try {
-      if (typeof logout === "function") {
-        await logout();
-      } else {
-        await signOut(getAuth());
-      }
-      navigate("/login");
-    } catch (e) {
-      console.error("Logout failed:", e);
-    }
-  };
-
-  return (
-    <header style={{ width: "100%", position: "sticky", top: 0, zIndex: 50 }}>
-      {/* Full-width, reversed ombré navbar */}
-      <nav
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0.6rem 1rem",
-          background:
-            "linear-gradient(to bottom, #0B1E3A 0%, #0E2A57 60%, #1C3E75 100%)",
-        }}
-      >
-        {/* Brand */}
-        <Link
-          to="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            color: "white",
-            textDecoration: "none",
-            fontWeight: 700,
-            fontSize: "1.05rem",
-          }}
-        >
-          <span
-            aria-hidden
-            style={{
-              width: 22,
-              height: 22,
-              display: "inline-block",
-              borderRadius: "50%",
-              backgroundColor: "#FF7A00",
-            }}
-          />
-          DateRate
-        </Link>
-
-        {/* Main nav tabs */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-          <NavLink
-            to="/"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/matches"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Matches
-          </NavLink>
-
-          <NavLink
-            to="/mutual-matches"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Mutual&nbsp;Matches
-          </NavLink>
-
-          <NavLink
-            to="/messages"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Messages
-          </NavLink>
-
-          <NavLink
-            to="/search"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Search
-          </NavLink>
-
-          <NavLink
-            to="/faq"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            FAQ
-          </NavLink>
-        </div>
-
-        {/* Right side: Upgrade OR Premium badge + Profile + Auth */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          {!isPremium ? (
-            <Link
-              to="/payments/checkout"
-              style={{
-                ...linkStyle,
-                backgroundColor: "#FF7A00",
-                borderRadius: 999,
-                padding: "0.5rem 0.9rem",
-              }}
-            >
-              Upgrade
-            </Link>
-          ) : (
-            <span
-              title="Premium active"
-              style={{
-                color: "white",
-                backgroundColor: "rgba(255,122,0,0.25)",
-                border: "1px solid #FF7A00",
-                borderRadius: 999,
-                padding: "0.35rem 0.7rem",
-                fontSize: "0.85rem",
-              }}
-            >
-              Premium
-            </span>
-          )}
-
-          <NavLink
-            to="/profile"
-            style={({ isActive }) =>
-              isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-            }
-          >
-            Profile
-          </NavLink>
-
-          {currentUser ? (
-            <button
-              onClick={handleLogout}
-              style={{
-                ...linkStyle,
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.35)",
-                borderRadius: 999,
-                cursor: "pointer",
-              }}
-            >
-              Logout
-            </button>
-          ) : (
-            <>
-              <NavLink
-                to="/login"
-                style={({ isActive }) =>
-                  isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-                }
-              >
-                Login
-              </NavLink>
-              <NavLink
-                to="/register"
-                style={({ isActive }) =>
-                  isActive ? { ...linkStyle, ...activeStyle } : linkStyle
-                }
-              >
-                Register
-              </NavLink>
-            </>
-          )}
-        </div>
-      </nav>
-
-      {/* Thin orange line beneath navbar */}
-      <div style={{ height: 2, width: "100%", backgroundColor: "#FF7A00" }} />
-    </header>
-  );
+const styles = {
+  bar: {
+    width: '100%',
+    background: '#0b1a3a',
+    color: 'white',
+    borderBottom: '2px solid #e67300',
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
+  },
+  inner: {
+    maxWidth: 1200,
+    margin: '0 auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '10px 16px',
+    gap: 12,
+  },
+  brandWrap: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    textDecoration: 'none',
+    color: 'white',
+    fontWeight: 700,
+    fontSize: 18,
+    letterSpacing: 0.3,
+  },
+  heart: {
+    display: 'inline-block',
+    width: 26,
+    height: 26,
+    borderRadius: '6px',
+    background: '#e67300',
+    color: '#0b1a3a',
+    fontWeight: 900,
+    textAlign: 'center',
+    lineHeight: '26px',
+  },
+  nav: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 14,
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+    opacity: 0.9,
+    padding: '8px 10px',
+    borderRadius: 10,
+    fontWeight: 600,
+    fontSize: 14,
+  },
+  linkHover: {
+    background: 'rgba(255,255,255,0.08)',
+    opacity: 1,
+  },
+  right: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 10,
+  },
 };
 
-export default NavBar;
+function NavItem({ to, children }) {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <Link
+      to={to}
+      style={{ ...styles.link, ...(hover ? styles.linkHover : {}) }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      {children}
+    </Link>
+  );
+}
+
+export default function Navbar() {
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getFirestore();
+
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) return setIsPremium(false);
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        setIsPremium(Boolean(snap.exists() && snap.data()?.premium));
+      } catch {
+        setIsPremium(false);
+      }
+    });
+
+    return () => unsub();
+  }, []);
+
+  return (
+    <nav style={styles.bar}>
+      <div style={styles.inner}>
+        {/* Brand */}
+        <Link to="/" style={styles.brandWrap} aria-label="Home">
+          <span style={styles.heart}>❤</span>
+          <span>DateRate</span>
+        </Link>
+
+        {/* Middle nav */}
+        <div style={styles.nav}>
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/matches">Matches</NavItem>
+          <NavItem to="/messages">Messages</NavItem>
+          <NavItem to="/search">Search</NavItem>
+          <NavItem to="/faq">FAQ</NavItem>
+          <NavItem to="/profile">Profile</NavItem>
+          <NavItem to="/invite">Invite</NavItem>
+        </div>
+
+        {/* Right side actions */}
+        <div style={styles.right}>
+          {isPremium ? <PremiumBadge /> : <GoPremiumButton label="Go Premium" />}
+        </div>
+      </div>
+    </nav>
+  );
+}

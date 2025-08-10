@@ -3,9 +3,9 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({ origin: '*' }));
-app.use(express.json());
 
+app.use(express.json());
+app.use(cors({ origin: ['http://localhost:5173'] }));
 app.get('/', (req, res) => res.send('Backend is running!'));
 app.get('/health', (req, res) => res.status(200).send('OK'));
 

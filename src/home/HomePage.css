@@ -1,65 +1,66 @@
-.home-container {
-  padding: 2rem;
-  background-color: #0d1b2a;
-  color: white;
-  min-height: 100vh;
-  font-family: sans-serif;
-}
+/* /src/home/HomePage.css */
 
-.home-banner {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.home-banner h1 {
-  font-size: 2.5rem;
-  color: #f77f00;
-}
-
-.home-banner p {
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-.home-actions {
+.homepage {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-button {
+  margin-top: 1.5rem;
+  background-color: #e76f00;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #cc5f00;
+}
+
+.features-section {
+  display: flex;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
 }
 
-.home-card {
-  background-color: #1b263b;
+.feature-card {
+  background: white;
+  color: #0b1c3e;
   padding: 1.5rem;
-  border-radius: 12px;
-  width: 300px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  border-radius: 10px;
+  max-width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
+  transition: transform 0.2s;
 }
 
-.home-card h3 {
-  color: #f77f00;
-}
-
-.home-card p {
-  color: #ddd;
-}
-
-.home-card button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #f77f00;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.home-card button:hover {
-  background-color: #ff9900;
-}
-
-.premium-btn {
-  background-color: #ff4d4d;
+.feature-card:hover {
+  transform: translateY(-5px);
 }

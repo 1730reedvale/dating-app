@@ -1,23 +1,13 @@
-// server.js
-
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 
-// Middleware to parse incoming JSON
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Example route
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
+app.get('/', (req, res) => res.send('Backend is running!'));
+app.get('/health', (req, res) => res.status(200).send('OK'));
 
-// Health check route for Render
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
-
-// Use Render's port or fallback to 3000 for local testing
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

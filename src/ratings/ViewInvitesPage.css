@@ -1,0 +1,109 @@
+
+/* /src/ratings/ViewInvitesPage.css */
+
+.view-invites-page {
+  min-height: 80vh;
+  color: white;
+}
+
+.view-invites-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.view-invites-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.invites-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* space between row-cards */
+}
+
+.invites-table thead th {
+  text-align: left;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  color: #e6eefc;
+}
+
+.invites-table tbody tr {
+  background: white; /* minimal, intentional white */
+  color: #0b1c3e;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.invites-table tbody tr td {
+  padding: 0.9rem 0.95rem;
+  vertical-align: middle;
+}
+
+.invites-table tbody tr:first-child td:first-child {
+  border-top-left-radius: 10px;
+}
+.invites-table tbody tr:first-child td:last-child {
+  border-top-right-radius: 10px;
+}
+.invites-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.invites-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+/* Status pills */
+.status-responded,
+.status-pending {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.status-responded {
+  background: #e6faf1;
+  color: #127c4a;
+  border: 1px solid #b4e8cf;
+}
+
+.status-pending {
+  background: #fff3e6;
+  color: #a65300;
+  border: 1px solid #ffd4ad;
+}
+
+/* Links inside table */
+.invites-table a {
+  color: #e76f00;
+  word-break: break-all;
+}
+
+@media (max-width: 640px) {
+  .view-invites-container {
+    padding: 1.25rem;
+  }
+  .invites-table thead {
+    display: none;
+  }
+  .invites-table tbody tr {
+    display: block;
+    padding: 0.75rem;
+  }
+  .invites-table tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.45rem 0.25rem;
+    border: none;
+  }
+  .invites-table tbody tr td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #0b1c3e;
+    margin-right: 1rem;
+  }
+}

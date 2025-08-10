@@ -1,6 +1,6 @@
-/* /src/matches/MatchesPage.css */
+/* /src/matches/MutualMatchesPage.css */
 
-.matches-page {
+.mutual-matches-page {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -8,19 +8,19 @@
   text-align: center;
 }
 
-.matches-page h2 {
+.mutual-matches-page h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
-.matches-grid {
+.mutual-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
   justify-content: center;
 }
 
-.match-card {
+.mutual-card {
   background: white;
   color: #0b1c3e;
   padding: 1.5rem;
@@ -32,11 +32,11 @@
   transition: transform 0.2s;
 }
 
-.match-card:hover {
+.mutual-card:hover {
   transform: translateY(-6px);
 }
 
-.match-photo {
+.mutual-photo {
   width: 100px;
   height: 100px;
   border-radius: 50%;

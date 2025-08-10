@@ -1,0 +1,55 @@
+/* /src/ratings/RatingReceivedPage.css */
+
+/* Background with reversed ombré: darker at top, lighter at bottom */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #001f3f, #0074D9);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Thin orange line under navbar */
+.orange-line {
+  height: 3px;
+  background-color: #cc5500; /* darker orange */
+  width: 100%;
+}
+
+/* Page layout */
+.rating-received-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Rating card */
+.rating-card {
+  background: white;
+  color: black;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.rating-card h2 {
+  color: #cc5500;
+  margin-bottom: 20px;
+}
+
+.rating-card p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.error {
+  background: rgba(255, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 5px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "dating-app-payments-server",
+  "version": "1.0.0",
+  "description": "Express backend for Stripe subscription payments and Firebase premium status updates",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.4.0",
+    "stripe": "^14.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

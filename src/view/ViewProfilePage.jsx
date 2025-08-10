@@ -1,72 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { db } from '../firebase/firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+// /src/view/ViewProfilePage.jsx
+import React from 'react';
 import './ViewProfilePage.css';
 
+const profile = {
+  name: 'Sarah M.',
+  age: 28,
+  location: 'San Diego, CA',
+  bio: 'Lover of books, beaches, and brunch. Let’s find the best taco spot together.',
+  interests: ['Reading', 'Hiking', 'Travel', 'Photography'],
+  photo: 'https://randomuser.me/api/portraits/women/44.jpg',
+};
+
 const ViewProfilePage = () => {
-  const { uid } = useParams();
-  const [userData, setUserData] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const usersRef = collection(db, 'users');
-        const q = query(usersRef, where('uid', '==', uid));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-          setUserData(querySnapshot.docs[0].data());
-        }
-      } catch (err) {
-        console.error('Error fetching user data:', err);
-      }
-    };
-
-    if (uid) fetchUserData();
-  }, [uid]);
-
-  const handleMessage = () => {
-    navigate(`/messaging/${uid}`);
-  };
-
-  const handleInvite = () => {
-    navigate(`/invitations/send/${uid}`);
-  };
-
-  const convertInchesToFeetInches = (inches) => {
-    const ft = Math.floor(inches / 12);
-    const inch = inches % 12;
-    return `${ft}'${inch}"`;
-  };
-
-  if (!userData) {
-    return <div className="view-profile-container">Loading profile...</div>;
-  }
-
   return (
-    <div className="view-profile-container">
-      <div className="profile-header">
-        <img src={userData.photoURL || '/default-avatar.png'} alt={`${userData.name}'s profile`} />
-        <h2>{userData.name}</h2>
-        <p>{userData.age} • {userData.city}</p>
-        {userData.premium && <span className="boosted-badge">Premium Member</span>}
-      </div>
-
-      <div className="profile-details">
-        <p><strong>Gender:</strong> {userData.gender}</p>
-        <p><strong>Ethnicity:</strong> {userData.ethnicity || 'Not specified'}</p>
-        <p><strong>Religion:</strong> {userData.religion || 'Not specified'}</p>
-        <p><strong>Hair Color:</strong> {userData.hairColor || 'Not specified'}</p>
-        <p><strong>Height:</strong> {userData.height ? convertInchesToFeetInches(userData.height) : 'Not specified'}</p>
-        <p><strong>Weight:</strong> {userData.weight || 'Not specified'} lbs</p>
-        <p><strong>Body Type:</strong> {userData.bodyType || 'Not specified'}</p>
-        <p><strong>About:</strong> {userData.bio || 'No bio available.'}</p>
-      </div>
-
-      <div className="profile-actions">
-        <button onClick={handleMessage}>Message</button>
-        <button onClick={handleInvite}>Send Invite</button>
+    <div className="view-profile-page">
+      <div className="profile-card">
+        <img src={profile.photo} alt={profile.name} className="profile-photo" />
+        <h2>{profile.name}, {profile.age}</h2>
+        <p className="location">{profile.location}</p>
+        <p className="bio">"{profile.bio}"</p>
+        <h4>Interests:</h4>
+        <ul className="interests-list">
+          {profile.interests.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+        <div className="action-buttons">
+          <button className="like-button">❤️ Like</button>
+          <button className="message-button">💬 Message</button>
+        </div>
       </div>
     </div>
   );

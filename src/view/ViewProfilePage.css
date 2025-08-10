@@ -1,76 +1,83 @@
-.view-profile {
+/* /src/view/ViewProfilePage.css */
+
+.view-profile-page {
   padding: 2rem;
-  background-color: #0d1b2a;
+  max-width: 800px;
+  margin: 0 auto;
   color: white;
-  min-height: 100vh;
-  font-family: sans-serif;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .profile-card {
-  background-color: #1b263b;
+  background: white;
+  color: #0b1c3e;
   padding: 2rem;
   border-radius: 12px;
-  width: 400px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   text-align: center;
+  width: 100%;
 }
 
-.profile-card h2 {
-  color: #f77f00;
-  margin-bottom: 0.5rem;
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e76f00;
+  margin-bottom: 1rem;
 }
 
-.profile-card p {
-  color: #ccc;
-  margin: 0.3rem 0;
+.location {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
-.reputation-section {
-  margin-top: 1.5rem;
-  background-color: #243447;
-  padding: 1rem;
-  border-radius: 8px;
+.bio {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
-.reputation-section h3 {
-  color: #f77f00;
-  margin-bottom: 0.5rem;
+.interests-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
 }
 
-.actions {
+.interests-list li {
+  background-color: #e76f00;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.action-buttons {
   margin-top: 1.5rem;
   display: flex;
-  justify-content: space-around;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.invite-btn,
-.message-btn {
-  padding: 0.5rem 1.2rem;
+.like-button,
+.message-button {
+  background-color: #e76f00;
+  color: white;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s;
 }
 
-.invite-btn {
-  background-color: #f77f00;
-  color: white;
-}
-
-.invite-btn:hover {
-  background-color: #ff9900;
-}
-
-.message-btn {
-  background-color: #ff4d4d;
-  color: white;
-}
-
-.message-btn:hover {
-  background-color: #ff6666;
+.like-button:hover,
+.message-button:hover {
+  background-color: #cc5f00;
 }

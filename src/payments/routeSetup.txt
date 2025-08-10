@@ -1,0 +1,21 @@
+Add these routes to your React router (react-router-dom v6):
+
+1) Imports
+--------------------------------
+import CheckoutPage from "./payments/CheckoutPage.jsx";
+import SuccessPage from "./payments/SuccessPage.jsx";
+import CancelPage from "./payments/CancelPage.jsx";
+
+2) <Routes> entries
+--------------------------------
+<Route path="/payments/checkout" element={<CheckoutPage />} />
+<Route path="/payments/success" element={<SuccessPage />} />
+<Route path="/payments/cancel" element={<CancelPage />} />
+
+Where to put them:
+- If you route inside /src/App.jsx, add the imports at the top of App.jsx and the <Route> lines inside <Routes>.
+- If you have a routes file (e.g., /src/routes/AppRoutes.jsx), add them there.
+
+Optional server note:
+- If the server can’t see your .env values, add to the TOP of dating-app/server/index.js:
+    import "dotenv/config";

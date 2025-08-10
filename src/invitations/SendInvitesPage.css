@@ -1,0 +1,67 @@
+/* /src/invitations/SendInvitesPage.css */
+.invite-page {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.invite-page h2 {
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-form input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #e65c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #cc5200;
+}
+
+.invite-results {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.invite-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.invite-results li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.invite-results a {
+  color: #e65c00;
+  word-break: break-all;
+}

@@ -27,4 +27,22 @@ app.get('/api/stripe/ping', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+// Quick test checkout (redirects to Stripe)
+app.get('/api/stripe/test-checkout', async (req, res) => {
+  try {
+    if (!stripe) return res.status(500).send('STRIPE_SECRET_KEY missing');
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: 'price_1RuHoBQEWybjs7MrWDfweI6n', quantity: 1 }],
+      success_url: 'http://localhost:5173/payments/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'http://localhost:5173/payments/cancel'
+    });
+
+    return res.redirect(303, session.url);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

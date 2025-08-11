@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import NavBar from "./components/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 // Core pages
 import HomePage from "./home/HomePage.jsx";
@@ -39,7 +39,7 @@ export default function App() {
           "linear-gradient(to bottom, #0B1E3A 0%, #0E2A57 50%, #1C3E75 100%)",
       }}
     >
-      <NavBar />
+      <Navbar />
 
       {/* Body */}
       <main style={{ flex: 1, width: "100%", maxWidth: 1200, margin: "0 auto" }}>
